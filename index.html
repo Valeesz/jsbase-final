@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAL</title>
+    
+    <script>
+
+        //функция выдает зарплату в зависимости от позиции
+        function getRand(nid) {
+            if(name.indexOf('Junior')==true){
+                min=500;
+                max=1000;
+            }else if(name.indexOf('Middle')==true) {
+                min =1500;
+                max = 2000;
+            }
+            else if(name.indexOf('Senior')==true) 
+            {
+                min=2500;
+                max=3000;
+            }
+            else {
+                min=4000;
+                max=4500;
+            }
+            return Math.random() * (max - min) + min;
+        }
+        
+        // function getName(){
+        //     let name = [];
+        //     for(let i = 0; i < 7; i++){
+        //         name[i]= String(prompt("Введите имя для " + dolj[i]));     
+        //     }
+
+        // }
+        //массив 1 пункт - должности + заполнение массива имен: поправка - перенесено в функцию getName- ВЫЗОВ ФУНКЦИИ getName()
+        let dolj = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+        //getName();
+        let name = [];
+            for(let i = 0; i < 7; i++){
+                name[i]= String(prompt("Введите имя для " + dolj[i]));     
+            }
+        //вывод 2-х массивов
+        for(let i = 0; i < 7; i++){
+            document.write(name[i]+' ');
+            document.write(dolj[i]+'<br>');     
+        }
+
+
+        //создание общего массива (зачем?????)
+
+        let usr = [];
+        for(let i = 0;i < 7; i++){
+            usr[i]= Array(name[i], dolj[i]);
+        }
+
+        document.write("<br><br>");
+        document.write("<br><br>");
+
+
+        //построение обьекта, как можно сделать несколько в пределах одного? это же не класс! + вписывание результата в таблицу html
+        let test;
+        let user = {};
+        //document.write('<table>');
+        for (var i = 0; i < usr.length; i++){
+           
+            test = dolj[i]; 
+            user = {
+                'Name' : name[i],
+                'Position' : dolj[i],
+                'Salary' : parseInt(getRand(test)),
+                tellAbout() {
+                    document.write('Здравствуйте, меня зовут '+this.Name+". Я работаю "+this.Position+'. Я зарабатываю - '+ this.Salary+'$.<br>')
+                },
+                showTeam(){
+                    document.write(this.Name+' - '+this.Position+'. Зарплата - '+this.Salary+'$<br>');
+                }
+
+            };
+
+        //document.write('<tr><td>'+ user.Name+'</td>'+'<td>'+  user.Position +'</td>'+'<td>' +user.Salary+'</td></tr>' );
+        //document.write('</table>');
+        document.write(user.Name+' '+  user.Position + ' ' +user.Salary+' $ <br>' );
+
+        //document.write(user.tellAbout()+'<br>'+user.showTeam());
+        user.tellAbout();
+        user.showTeam();
+
+        document.write("<br><br>");
+        document.write("<br><br>");
+        }//вывод в консоль - тут уже последний - менеджер
+        
+
+
+      //  console.log(user);
+        
+    
+    </script>
+    
+
+</head>
+<body>
+    
+</body>
+</html>
